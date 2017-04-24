@@ -132,25 +132,6 @@
                                         <overWrite>false</overWrite>
                                         <outputDirectory>${jboss.home}/modules</outputDirectory>
                                     </artifactItem>
-                                     <artifactItem>
-                                        <groupId>org.infinispan</groupId>
-                                        <artifactId>infinispan-as-embedded-modules</artifactId>
-                                        <version>${infinispanVersion}</version>
-                                        <type>zip</type>
-                                        <overWrite>false</overWrite>
-                                        <outputDirectory>${jboss.home}/modules</outputDirectory>
-                                    </artifactItem>
-                                   <!--
-                                      Currently these are (mistakenly?) included in the above package org.infinispan:infinispan-as-embedded-modules
-                                      See https://issues.jboss.org/browse/ISPN-7006
-                                    <artifactItem>
-                                        <groupId>org.infinispan</groupId>
-                                        <artifactId>infinispan-as-client-modules</artifactId>
-                                        <version>${infinispanVersion}</version>
-                                        <type>zip</type>
-                                        <overWrite>false</overWrite>
-                                        <outputDirectory>${jboss.home}/modules</outputDirectory>
-                                    </artifactItem> -->
                                     <artifactItem>
                                         <groupId>org.hibernate</groupId>
                                         <artifactId>hibernate-search-modules</artifactId>
@@ -173,21 +154,6 @@
         <!-- Backends -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>hibernate-ogm-couchdb</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>hibernate-ogm-redis</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>hibernate-ogm-cassandra</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>hibernate-ogm-ehcache</artifactId>
             <scope>provided</scope>
         </dependency>
@@ -196,73 +162,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>hibernate-ogm-infinispan-remote</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.marshalling</groupId>
-                    <artifactId>jboss-marshalling-osgi</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-core</artifactId>
             <type>test-jar</type>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.marshalling</groupId>
-                    <artifactId>jboss-marshalling-osgi</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>hibernate-ogm-infinispan-remote</artifactId>
-            <type>test-jar</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-client-hotrod</artifactId>
-            <type>test-jar</type>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.marshalling</groupId>
-                    <artifactId>jboss-marshalling-osgi</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-server-hotrod</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.marshalling</groupId>
-                    <artifactId>jboss-marshalling-osgi</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-server-hotrod</artifactId>
-            <type>test-jar</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-remote-query-server</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.transaction</groupId>
@@ -334,105 +234,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>run-couchdb-wildfly-tests</id>
-            <!-- To run the tests you need to define the 
-                environment property: COUCHDB_HOSTNAME -->
-            <activation>
-                <property>
-                    <name>env.COUCHDB_HOSTNAME</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                   <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>couchdb-integration-tests</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                                    <includes>
-                                        <include>**/couchdb/*IT.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>run-redis-wildfly-tests</id>
-            <!-- To run the tests you need to define the
-                environment property: REDIS_HOSTNAME -->
-            <activation>
-                <property>
-                    <name>env.REDIS_HOSTNAME</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>redis-integration-tests</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                                    <includes>
-                                        <include>**/redis/*IT.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>run-cassandra-wildfly-tests</id>
-            <!-- To run the tests you need to define the
-                environment property: CASSANDRA_HOSTNAME -->
-            <activation>
-                <property>
-                    <name>env.CASSANDRA_HOSTNAME</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>cassandra-integration-tests</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                                    <includes>
-                                        <include>**/cassandra/*IT.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

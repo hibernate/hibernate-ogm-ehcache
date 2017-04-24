@@ -1,4 +1,4 @@
-= Hibernate OGM Contrib {hibernate-ogm-version}: Reference Guide
+= Hibernate OGM EhCache {hibernate-ogm-version}: Reference Guide
 Emmanuel Bernard; Sanne Grinovero; Gunnar Morling; Davide D'Alto; Guillaume Scheibel; Mark Paluch; Guillaume Smet
 :doctype: book
 :revdate: {docdate}
@@ -16,8 +16,3 @@ include::modules/preface.asciidoc[]
 
 include::modules/ehcache.asciidoc[]
 
-include::modules/couchdb.asciidoc[]
-
-include::modules/cassandra.asciidoc[]
-
-include::modules/redis.asciidoc[]

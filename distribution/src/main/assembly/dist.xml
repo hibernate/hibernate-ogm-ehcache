@@ -39,50 +39,6 @@
             </includes>
         </dependencySet>
 
-        <!--
-        #######################################################################
-        #  hibernate-ogm-couchdb
-        #######################################################################
-         -->
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>dist/lib/couchdb</outputDirectory>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
-            <unpack>false</unpack>
-            <includes>
-                <include>org.hibernate.ogm:hibernate-ogm-couchdb</include>
-             </includes>
-        </dependencySet>
-
-        <!--
-        #######################################################################
-        #  hibernate-ogm-cassandra
-        #######################################################################
-        -->
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>dist/lib/cassandra</outputDirectory>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
-            <unpack>false</unpack>
-            <includes>
-                <include>org.hibernate.ogm:hibernate-ogm-cassandra</include>
-            </includes>
-        </dependencySet>
-
-        <!--
-        #######################################################################
-        #  hibernate-ogm-redis
-        #######################################################################
-        -->
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>dist/lib/redis</outputDirectory>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
-            <unpack>false</unpack>
-            <includes>
-                <include>org.hibernate.ogm:hibernate-ogm-redis</include>
-            </includes>
-        </dependencySet>
     </dependencySets>
 
     <files>
@@ -135,12 +91,6 @@
         <fileSet>
             <directory>../documentation/javadoc/target/apidocs</directory>
             <outputDirectory>docs/api</outputDirectory>
-        </fileSet>
-
-        <!--  Google Guava 17.0 for lettuce/Redis -->
-        <fileSet>
-            <directory>target/lib/redis</directory>
-            <outputDirectory>dist/lib/redis</outputDirectory>
         </fileSet>
      </fileSets>
 </assembly>
