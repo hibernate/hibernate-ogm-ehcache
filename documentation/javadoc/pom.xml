@@ -10,12 +10,12 @@
 
     <parent>
         <groupId>org.hibernate.ogm</groupId>
-        <artifactId>hibernate-ogm-contrib-documentation</artifactId>
+        <artifactId>hibernate-ogm-ehcache-documentation</artifactId>
         <version>5.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hibernate-ogm-contrib-javadoc</artifactId>
+    <artifactId>hibernate-ogm-ehcache-javadoc</artifactId>
     <packaging>jar</packaging>
 
     <name>Hibernate OGM EhCache Javadoc</name>

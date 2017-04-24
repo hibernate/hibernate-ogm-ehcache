@@ -14,14 +14,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hibernate-ogm-contrib-distribution</artifactId>
+    <artifactId>hibernate-ogm-ehcache-distribution</artifactId>
     <packaging>pom</packaging>
 
     <name>Hibernate OGM EhCache Distribution</name>
     <description>Creates the distribution package for Hibernate OGM contrib</description>
 
     <properties>
-        <assembly.name>hibernate-ogm-contrib-${project.version}</assembly.name>
+        <assembly.name>hibernate-ogm-ehcache-${project.version}</assembly.name>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
@@ -61,7 +61,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.hibernate.ogm</groupId>
-                    <artifactId>hibernate-ogm-contrib-javadoc</artifactId>
+                    <artifactId>hibernate-ogm-ehcache-javadoc</artifactId>
                     <version>${project.version}</version>
                     <classifier>javadoc</classifier>
                 </dependency>
