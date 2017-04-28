@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>hibernate-ogm-documentation-examples</artifactId>
+        <artifactId>hibernate-ogm-ehcache-documentation-examples</artifactId>
         <groupId>org.hibernate.ogm</groupId>
         <version>5.2.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hibernate-ogm-documentation-examples-gettingstarted</artifactId>
-    <name>Hibernate OGM Getting Started</name>
-    <description>Full code for the Getting Started Guide</description>
+    <artifactId>hibernate-ogm-ehcache-documentation-examples-gettingstarted</artifactId>
+    <name>Hibernate OGM EhCache Getting Started</name>
+    <description>Full code for the Getting Started Guide with EhCache</description>
 
     <dependencyManagement>
         <dependencies>
@@ -25,7 +25,8 @@
     <dependencies>
         <dependency>
             <groupId>org.hibernate.ogm</groupId>
-            <artifactId>hibernate-ogm-infinispan</artifactId>
+            <artifactId>hibernate-ogm-ehcache</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.transaction</groupId>
