@@ -59,10 +59,20 @@
         <asciidoctorj-pdf.version>1.5.0-alpha.11</asciidoctorj-pdf.version>
     </properties>
 
+    <modules>
+        <module>ehcache</module>
+        <module>modules</module>
+    </modules>
+
     <!-- Only for management of test-scoped dependencies; All other dependencies (which are exposed to users) are
          managed in the BOM -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>hibernate-ogm-ehcache</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -734,18 +744,6 @@
     </repositories>
 
     <profiles>
-        <profile>
-            <id>non-jigsaw</id>
-            <activation>
-                <!-- The versions we're using of Ehcache, Infinispan and Neo4J won't work on JDK9. Needs upgrading.  -->
-                <jdk>1.8</jdk>
-            </activation>
-            <modules>
-                <module>ehcache</module>
-                <!-- The WildFly modules require the other modules to be enabled too -->
-                <module>modules</module>
-            </modules>
-        </profile>
         <profile>
             <id>jigsaw</id>
             <activation>

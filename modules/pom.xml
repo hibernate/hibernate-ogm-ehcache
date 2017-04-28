@@ -16,8 +16,8 @@
     <artifactId>hibernate-ogm-ehcache-modules</artifactId>
     <packaging>pom</packaging>
 
-    <name>Hibernate OGM WildFly Module</name>
-    <description>Hibernate OGM modules creation to use in WildFly</description>
+    <name>Hibernate OGM EhCache WildFly Module</name>
+    <description>Hibernate OGM modules creation to use in WildFly with EhCache</description>
 
     <properties>
         <module.xml.basedir>${basedir}/src/main/modules</module.xml.basedir>
@@ -30,19 +30,11 @@
         <dependency>
             <groupId>org.hibernate.ogm</groupId>
             <artifactId>hibernate-ogm-ehcache</artifactId>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <configuration>
-                    <!-- Skipping it because neo4j uses a different Lucene version -->
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
             </plugin>
