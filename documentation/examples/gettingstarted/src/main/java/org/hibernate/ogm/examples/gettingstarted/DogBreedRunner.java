@@ -6,15 +6,15 @@
  */
 package org.hibernate.ogm.examples.gettingstarted;
 
-import org.hibernate.ogm.examples.gettingstarted.domain.Breed;
-import org.hibernate.ogm.examples.gettingstarted.domain.Dog;
-import org.hibernate.ogm.util.impl.Log;
-import org.hibernate.ogm.util.impl.LoggerFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.transaction.TransactionManager;
+
+import org.hibernate.ogm.examples.gettingstarted.domain.Breed;
+import org.hibernate.ogm.examples.gettingstarted.domain.Dog;
+import org.hibernate.ogm.util.impl.Log;
+import org.hibernate.ogm.util.impl.LoggerFactory;
 
 public class DogBreedRunner {
 
