@@ -178,5 +178,9 @@ public class PerTableCacheManager
 		@Override
 		public void close() {
 		}
+
+		@Override
+		public void remove() {
+		}
 	}
 }

@@ -141,5 +141,9 @@ public class OnePerKindCacheManager extends LocalCacheManager<SerializableEntity
 		@Override
 		public void close() {
 		}
+
+		@Override
+		public void remove() {
+		}
 	}
 }
